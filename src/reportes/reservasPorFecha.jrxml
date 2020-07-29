@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reservas por fecha" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2b0d6f2f-8cd1-4af3-a17e-cf1097140fc9">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<parameter name="fecha" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT chocolate.reserva.fecha,
+	chocolate.local.local,
+	chocolate.cliente.nombre
+FROM chocolate.reserva
+	INNER JOIN chocolate.mesa ON 
+	 chocolate.reserva.`Mesa_idMesa` = chocolate.mesa.`idMesa` 
+	INNER JOIN chocolate.local ON 
+	 chocolate.mesa.`Local_idlocal` = chocolate.local.idlocal 
+	INNER JOIN chocolate.cliente ON 
+	 chocolate.reserva.`Cliente_cedula` = chocolate.cliente.cedula
+	 where chocolate.reserva.fecha>= $P{fecha}]]>
+	</queryString>
+	<field name="fecha" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="local" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="local"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="local"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cliente"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="0" width="263" height="30" uuid="310c4730-d91c-4dfb-8e73-f09e4f93c7ea"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESTAURANTE CHOCOLATE]]></text>
+			</staticText>
+			<image>
+				<reportElement x="10" y="10" width="60" height="60" uuid="1e1f47e7-6f47-47f3-af33-03c17c1788b7"/>
+				<imageExpression><![CDATA["C:\\Users\\OLIMPI35\\Documents\\HerbarioAMG\\herbarioAMG-Escritorio\\src\\main\\java\\co\\edu\\uniquindio\\AMG\\vista\\imagen4.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="e6b46a6e-62a4-4051-81cf-0775c7636d32">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9cdfccb5-34f8-4bda-98b2-36e9f034b054"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha de Reserva ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="0" width="100" height="30" uuid="9fd09c47-e1d5-4991-858a-7102665bb9e2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="131336bf-49f7-4b4b-a282-644dd940d178"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre del local]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="0" width="100" height="30" uuid="5b21ede2-62d9-4e23-922b-f70a820f99cb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6563437d-1099-4eb9-8e39-72ddf28702f1"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="48" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="100" height="30" uuid="55b5db17-48ae-4d4e-b2f9-e19976493d72">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9cdfccb5-34f8-4bda-98b2-36e9f034b054"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="10" width="100" height="30" uuid="e9b34fb2-2565-4bcf-be8d-57797db47cf5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="131336bf-49f7-4b4b-a282-644dd940d178"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{local}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="10" width="100" height="30" uuid="de4d1fed-e0e2-4ce6-a180-981b5c302bdc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6563437d-1099-4eb9-8e39-72ddf28702f1"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

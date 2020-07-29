@@ -1,0 +1,50 @@
+.button{
+    -fx-text-fill: white;
+}
+
+.combo-box, .text-field{
+    -fx-background-color: white;
+    -fx-border-color: #5BC0DE;
+    -fx-border-radius: 5;
+    -fx-text-fill: #234567;
+}
+
+.label{
+    -fx-font-size: 15;
+}
+
+#btn_buscar, #btn_reportar, #btn_volver, #btn_actualizar{
+    -fx-background-color: #437BB4;
+}
+
+#btn_crear{
+    -fx-background-color: #157A59;
+}
+
+#btn_eliminar, #btn_borrar{
+    -fx-background-color: #D53400;
+}
+
+#btn_limpiar{
+    -fx-background-color: #5BC0DE;
+}
+
+#btn_nueva_ciudad, #btn_nuevo_estado, #btn_nuevo_cargo, #btn_nuevo_cliente, #btn_nuevo_empleado{
+    -fx-background-color: transparent;
+    -fx-text-fill: #234567;
+    -fx-font-size: 21;
+}
+
+#left{
+    -fx-border-color: #000000;
+}
+
+#top{
+    -fx-background-color: #4E5466;
+    -fx-text-fill: white;
+}
+
+#title{
+    -fx-font-size: 21;
+    -fx-text-fill: white;
+}

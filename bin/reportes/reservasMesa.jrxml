@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reservasMesa" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="61ae3387-059c-439c-bc00-15d48fb8f07e">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<parameter name="mesa" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT chocolate.reserva.`idReserva`,
+	chocolate.reserva.fecha,
+	chocolate.reserva.`Mesa_idMesa`,
+	chocolate.local.local
+FROM chocolate.reserva
+	INNER JOIN chocolate.mesa ON 
+	 chocolate.reserva.`Mesa_idMesa` = chocolate.mesa.`idMesa` 
+	INNER JOIN chocolate.cliente ON 
+	 chocolate.reserva.`Cliente_cedula` = chocolate.cliente.cedula 
+	INNER JOIN chocolate.local ON 
+	 chocolate.mesa.`Local_idlocal` = chocolate.local.idlocal
+	 where chocolate.reserva.`Mesa_idMesa`= $P{mesa} ]]>
+	</queryString>
+	<field name="idReserva" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idReserva"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="Mesa_idMesa" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="Mesa_idMesa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="local" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="local"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="local"/>
+	</field>
+	<group name="Mesa_idMesa">
+		<groupExpression><![CDATA[$F{Mesa_idMesa}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="140" y="0" width="281" height="30" uuid="28521496-6f8f-4c66-969f-e38c781568f3"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESTAURANTE CHOCOLATE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="fb1a18ee-b33c-4e90-853e-6357e1bb9708">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e346375-4afa-4d3b-9238-2af6d4699370"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[idReserva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="0" width="100" height="30" uuid="fe5a5803-dd21-4a5b-8d60-fe6a3ce2af6e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f904cfe3-89ec-4c6c-91e6-3d28686234a2"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="100" height="30" uuid="c22116ce-3dd5-4c98-9d0a-f2a08c67c6bb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a7064775-8171-4a0c-ab6b-42cd109aab85"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[local]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="0" width="100" height="30" uuid="181bfa73-e98c-4418-924f-8ed1672fedc2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c756d1c0-d91f-4cc1-af66-a2a779446ba4"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mesa_idMesa]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="100" height="30" uuid="0a23b691-1fc0-4c62-8eab-091fe50adf7b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e346375-4afa-4d3b-9238-2af6d4699370"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{idReserva}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="10" width="100" height="30" uuid="ee693538-60e7-4d19-89ae-3352053fdeeb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f904cfe3-89ec-4c6c-91e6-3d28686234a2"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="10" width="100" height="30" uuid="74500257-6f45-4ba2-be1b-91d119463451">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a7064775-8171-4a0c-ab6b-42cd109aab85"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{local}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="10" width="100" height="30" uuid="a426fbe5-4210-4d59-bb81-9796aab2430d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c756d1c0-d91f-4cc1-af66-a2a779446ba4"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{Mesa_idMesa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

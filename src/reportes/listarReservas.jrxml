@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="listarReservas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="51645a7f-bf17-4e34-8391-422c3c6243bd">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="479"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="521"/>
+	<parameter name="local" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT chocolate.reserva.`idReserva`,
+	chocolate.reserva.fecha,
+	chocolate.reserva.`Cliente_cedula`,
+	chocolate.reserva.`Mesa_idMesa`,
+	chocolate.local.local,
+	chocolate.cliente.nombre
+FROM chocolate.reserva
+	INNER JOIN chocolate.cliente ON 
+	 chocolate.reserva.`Cliente_cedula` = chocolate.cliente.cedula 
+	INNER JOIN chocolate.mesa ON 
+	 chocolate.reserva.`Mesa_idMesa` = chocolate.mesa.`idMesa` 
+	INNER JOIN chocolate.local ON 
+	 chocolate.mesa.`Local_idlocal` = chocolate.local.idlocal
+	 where 
+	 chocolate.local.local= $P{local} ]]>
+	</queryString>
+	<field name="idReserva" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="idReserva"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="local" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Mesa_idMesa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="Cliente_cedula"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reserva"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="53" splitType="Stretch">
+			<staticText>
+				<reportElement x="160" y="-10" width="240" height="30" uuid="c41d271f-28b2-42b2-b878-53cb65111f3b"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESTAURANTE CHOCOLATE]]></text>
+			</staticText>
+			<image>
+				<reportElement x="25" y="-10" width="50" height="60" uuid="0114b864-b7e2-499c-ac19-273cd5654e61"/>
+				<imageExpression><![CDATA["C:\\Users\\OLIMPI35\\Documents\\HerbarioAMG\\herbarioAMG-Escritorio\\src\\main\\java\\co\\edu\\uniquindio\\AMG\\vista\\imagen4.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="b509b268-5322-4b0e-bd80-6df671be1e55">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f03c9c11-a630-44ec-8d75-fe21ea6bd553"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="0" width="100" height="30" uuid="39dc7f93-ed32-429f-98e4-964aebe7f0d6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f25103e6-368f-4372-a8e6-f5fcbc7714d9"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Reserva]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="0" width="80" height="30" uuid="ba240729-b6de-4de2-b7ef-45952bd8faa3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eac80b29-0446-417e-9ecb-b0a1abbdc653"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Local]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="0" width="100" height="30" uuid="11da5080-8515-4cfa-8ffc-b7205f395729">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0c89a44d-b6e7-4d96-bebc-a9421160d282"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="43" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="100" height="30" uuid="bacac2c1-f844-4779-9f9d-f9c519ae1fd6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f03c9c11-a630-44ec-8d75-fe21ea6bd553"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{idReserva}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="10" width="100" height="30" uuid="36c3253b-2a1b-41a9-bd11-5ee4e5728bb6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f25103e6-368f-4372-a8e6-f5fcbc7714d9"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="10" width="80" height="30" uuid="426b675c-c79a-40b3-9f3f-93469ebda993">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eac80b29-0446-417e-9ecb-b0a1abbdc653"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{local}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="10" width="100" height="30" uuid="e9511722-a6ab-440b-8361-02a9eded6770">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0c89a44d-b6e7-4d96-bebc-a9421160d282"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="9" splitType="Stretch"/>
+	</summary>
+</jasperReport>

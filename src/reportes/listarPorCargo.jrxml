@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="listarPorCargo" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8e379539-8fae-445c-acda-bb1a9024c24f">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<parameter name="cargo" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT chocolate.cargo.nombre,
+	chocolate.empleado.nombre,
+	chocolate.empleado.cedula,
+	chocolate.local.local
+FROM chocolate.empleado
+	INNER JOIN chocolate.cargo ON 
+	 chocolate.empleado.`Cargo_idCargo` = chocolate.cargo.`idCargo` 
+	INNER JOIN chocolate.local ON 
+	 chocolate.empleado.`Local_idlocal` = chocolate.local.idlocal
+	 where chocolate.cargo.nombre= $P{cargo}]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cargo"/>
+	</field>
+	<field name="COLUMN_2" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empleado"/>
+	</field>
+	<field name="cedula" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="cedula"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empleado"/>
+	</field>
+	<field name="local" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="local"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="local"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="130" y="0" width="320" height="30" uuid="038338d9-5ee8-4553-b556-ee1d5e83b83f"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESTAURANTE CHOCOLATE]]></text>
+			</staticText>
+			<image>
+				<reportElement x="21" y="10" width="59" height="60" uuid="f63f94c1-dfc0-4bf8-beac-afe27067c3fb"/>
+				<imageExpression><![CDATA["C:\\Users\\OLIMPI35\\Documents\\HerbarioAMG\\herbarioAMG-Escritorio\\src\\main\\java\\co\\edu\\uniquindio\\AMG\\vista\\imagen4.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="12c5121b-42ef-422e-b2a9-38bfc3a915e2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3967eef0-90b2-448a-9391-65c3f31eebcd"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre del empleado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="0" width="100" height="30" uuid="395c3f04-5437-4c2e-8957-045d555e81c0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a6f1e93e-2a5c-4d4a-b184-9f3aab98f342"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cedula del Empleado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="0" width="100" height="30" uuid="dd338808-b6f5-4868-a09e-754b9d7034d5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="de95c010-57f3-46d2-851d-c4385a99c226"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Local ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="100" height="30" uuid="3be1fe79-0a54-4803-a799-996a9aed030a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="301c5d93-de9e-4bb7-91c8-969a353d0400"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cargo del Empleado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="56" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="100" height="30" uuid="c15ba8b0-c5da-4b07-b6da-a8ca7db3e53f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3967eef0-90b2-448a-9391-65c3f31eebcd"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="10" width="100" height="30" uuid="8d78e1c8-8753-40cc-b92e-c854c47e2203">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a6f1e93e-2a5c-4d4a-b184-9f3aab98f342"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="10" width="100" height="30" uuid="bffd82c0-ec23-4675-8b6f-5d57155e10ea">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="de95c010-57f3-46d2-851d-c4385a99c226"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{local}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="10" width="100" height="30" uuid="00006246-fa38-4caf-855b-187a9075483e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="301c5d93-de9e-4bb7-91c8-969a353d0400"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

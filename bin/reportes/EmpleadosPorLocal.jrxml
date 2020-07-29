@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EmpleadosPorLocal" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36b7fa52-a774-489b-a07d-f9239d2d34fc">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[Y2hvY29sYXRlLmVtcGxlYWRvICwxNSwxNSxlMGY0Y2IzZi0zY2E4LTQ3YTUtYTY4Yi04YWQ2OGUw
+MGJjYjM7Y2hvY29sYXRlLmxvY2FsICwxOTMsNTUsZTczOTY1ODAtNWRjMC00NzkyLThmYmQtNjQ0
+ZGNkZGFhNTFiOw==]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (3)"/>
+	<parameter name="local" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT chocolate.empleado.cedula,
+	chocolate.empleado.nombre,
+	chocolate.local.local
+FROM chocolate.empleado
+	INNER JOIN chocolate.local ON 
+	 chocolate.empleado.`Local_idlocal` = chocolate.local.idlocal
+	 where chocolate.local.local= $P{local}]]>
+	</queryString>
+	<field name="cedula" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="cedula"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empleado"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empleado"/>
+	</field>
+	<field name="local" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="local"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="local"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="20" width="208" height="30" uuid="1536e89d-590b-49ce-8298-39449a18b54d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[RESTAURANTE CHOCOLATE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="5538a2a4-50c6-4c6a-8d99-107d17eebef3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4c1e8216-33f8-466f-bc1c-0eb494696b37"/>
+				</reportElement>
+				<text><![CDATA[Nombre Del Local]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="0" width="100" height="30" uuid="c5632a1d-8d6c-4d3f-949c-6e829e92669a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a4eb5a77-b57f-43d7-8923-9af7bdc027f5"/>
+				</reportElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="180" y="0" width="100" height="30" uuid="070cfd69-f953-429b-ad23-6b09f60fab2a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0319ec7d-8418-4871-b48d-ddc2c430d296"/>
+				</reportElement>
+				<text><![CDATA[Cedula del Cliente]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="10" width="100" height="30" uuid="006b9a3b-b231-4f77-8f2e-f95d2f941ad7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4c1e8216-33f8-466f-bc1c-0eb494696b37"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{local}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="10" width="100" height="30" uuid="6dde2bbf-2bac-404b-b26d-1fbed99161ef">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a4eb5a77-b57f-43d7-8923-9af7bdc027f5"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="180" y="10" width="100" height="30" uuid="be40f9a2-e5c0-4240-88d9-d6ccf0172ade">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0319ec7d-8418-4871-b48d-ddc2c430d296"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{cedula}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
